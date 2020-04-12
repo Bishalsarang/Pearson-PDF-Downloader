@@ -5,6 +5,7 @@ import glob
 import img2pdf
 from multiprocessing.pool import ThreadPool
 
+
 class Downloader(object):
     def __init__(self, book_id, page_count, download_dir):
         self.book_id = book_id
@@ -33,13 +34,12 @@ class Downloader(object):
         results = ThreadPool(8).imap_unordered(self.fetch_url, self.urls)
         for path in results:
             print(path)
-        print("Download Completed")
+        print("Downloading Images Completed")
 
-    def save_pdf(self)
-        with open(f"{self.download_dir}.pdf", "wb") as f:
-            f.write(img2pdf.convert(glob.glob(f"{self.download_dir}/*.jpg")))
-
-
+    def save_pdf(self):
+        print(self.download_dir, glob.glob("self.download_dir/*.png"))
+        with open(f"{self.download_dir}/{self.download_dir}.pdf", "wb") as f:
+            f.write(img2pdf.convert(glob.glob(f"{self.download_dir}/*.png")))
 
 def main():
     page_count = int(input("Enter total pages: "))
@@ -48,6 +48,7 @@ def main():
 
     downloader = Downloader(book_id, page_count, download_dir)
     downloader.save_images()
+    downloader.save_pdf()
 
 if __name__ == "__main__":
     main()
