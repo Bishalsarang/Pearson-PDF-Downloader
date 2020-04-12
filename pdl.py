@@ -37,9 +37,10 @@ class Downloader(object):
         print("Downloading Images Completed")
 
     def save_pdf(self):
-        print(self.download_dir, glob.glob("self.download_dir/*.png"))
         with open(f"{self.download_dir}/{self.download_dir}.pdf", "wb") as f:
             f.write(img2pdf.convert(glob.glob(f"{self.download_dir}/*.png")))
+        print("Saved pdf successfully")
+
 
 def main():
     page_count = int(input("Enter total pages: "))
